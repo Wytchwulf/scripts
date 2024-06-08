@@ -10,7 +10,7 @@ def run_gobuster(url):
 def extract_directories(scan_output):
     directories = []
     for line in scan_output.splitlines():
-        if '404' not in line:
+        if '301' in line:
             parts = line.split()
             directories.append(parts[0])
     return directories
@@ -48,4 +48,5 @@ if __name__ == "__main__":
     output_file = "80/gobuster_recursive_results.txt"
     os.makedirs("80", exist_ok=True)
     main(base_url, output_file)
+
 
